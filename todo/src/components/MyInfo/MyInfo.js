@@ -1,8 +1,9 @@
 import React from "react";
+import "./styles.css";
 
 const MyInfo = () => {
   return (
-    <div>
+    <div className="container">
       <h1>Rodrigo</h1>
       <p>I'm a developer!</p>
       <ol>
