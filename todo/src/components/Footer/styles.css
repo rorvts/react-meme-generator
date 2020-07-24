@@ -1,0 +1,12 @@
+.footer {
+  background-color: #222222;
+  height:300px;
+  width: 100vw;
+}
+
+.footer h1 {
+  display: flex;
+  color: white;
+  justify-content: center;
+  padding-top: 140px;
+}
