@@ -1,15 +1,32 @@
 import React from "react";
 import "./styles.css";
-import List from "./components/List/List";
+import Joke from "./components/Joke/Joke";
 
 const App = () => {
   return (
-    <div className="todo-list">
-      <List />
-      <List />
-      <List />
-      <List />
-    </div>
+    <>
+      <Joke
+        question="Question 1"
+        punchLine="Punchline 1"
+      />
+
+      <Joke
+        punchLine="Punchline 2"
+      />
+
+      <Joke
+        punchLine="Punchline 3"
+      />
+
+      <Joke
+        punchLine="Punchline 4"
+      />
+
+      <Joke
+        question="Question 2"
+        punchLine="Punchline 5"
+      />
+    </>
   );
 }
 
