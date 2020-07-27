@@ -1,0 +1,9 @@
+li {
+  margin-top: 20px;
+}
+
+input, p {
+  display: inline;
+  vertical-align: middle;
+  margin-left: 10px;
+}

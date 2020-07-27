@@ -1,15 +1,14 @@
 import React from "react";
 import "./styles.css";
-import Navbar from "./components/Navbar/Navbar";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
+import List from "./components/List/List";
 
 const App = () => {
   return (
     <>
-      <Navbar />
-      <Main />
-      <Footer />
+      <List />
+      <List />
+      <List />
+      <List />
     </>
   );
 }
