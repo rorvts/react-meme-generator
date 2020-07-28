@@ -1,13 +1,16 @@
 import React from "react";
 import "./styles.css";
-import Joke from "./components/Joke/Joke";
-import jokeApi from "./api";
+import Product from "./components/Product/Product";
+import api from "./productData";
 
 const App = () => {
-  const jokeComponents = jokeApi.map(joke => <Joke question={joke.question} punchLine={joke.punchLine}/>)
+  const productComponents = api.map(item => <Product 
+    key={item.id} 
+    product={item}
+  />);
   return (
     <>
-      {jokeComponents}
+      {productComponents}
     </>
   );
 }
