@@ -1,31 +1,13 @@
 import React from "react";
 import "./styles.css";
 import Joke from "./components/Joke/Joke";
+import jokeApi from "./api";
 
 const App = () => {
+  const jokeComponents = jokeApi.map(joke => <Joke question={joke.question} punchLine={joke.punchLine}/>)
   return (
     <>
-      <Joke
-        question="Question 1"
-        punchLine="Punchline 1"
-      />
-
-      <Joke
-        punchLine="Punchline 2"
-      />
-
-      <Joke
-        punchLine="Punchline 3"
-      />
-
-      <Joke
-        punchLine="Punchline 4"
-      />
-
-      <Joke
-        question="Question 2"
-        punchLine="Punchline 5"
-      />
+      {jokeComponents}
     </>
   );
 }
