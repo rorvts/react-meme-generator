@@ -5,16 +5,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "Rodrigo",
-      age: 27
+      isLoggedIn: true,
     }
   }
-  render() {
+  render(){
     return (
-      <div>
-        <h1>{this.state.name}</h1>
-        <h3>{this.state.age} years old</h3>
-      </div>
+    <h1>You are currently logged {this.state.isLoggedIn ? "in" : "out"}</h1>
     )
   }
 }
