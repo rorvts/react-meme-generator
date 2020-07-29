@@ -1,16 +1,20 @@
 import React from "react";
 import "./styles.css";
-import Header from "./components/Header/Header";
-import Greeting from "./components/Greeting/Greeting";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "Rodrigo",
+      age: 27
+    }
+  }
   render() {
-    const username = "Rodrigo"
     return (
-      <>
-        <Header username={username} />
-        <Greeting />
-      </>
+      <div>
+        <h1>{this.state.name}</h1>
+        <h3>{this.state.age} years old</h3>
+      </div>
     )
   }
 }
