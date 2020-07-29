@@ -1,12 +1,12 @@
 import React from "react";
 import "./styles.css";
 
-const List = () => {
+const List = (props) => {
   return (
-    <div className="todo-item">
-      <input type="checkbox" />
-      <p>Some text</p>
-    </div>
+      <div className="todo-item">
+        <input type="checkbox" checked={props.list.completed}/>
+        <p>{props.list.text}</p>
+      </div>
   );
 }
 

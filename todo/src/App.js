@@ -1,17 +1,14 @@
 import React from "react";
 import "./styles.css";
-import Product from "./components/Product/Product";
-import api from "./productData";
+import ToDo from "./components/List/List";
+import api from "./todoData";
 
 const App = () => {
-  const productComponents = api.map(item => <Product 
-    key={item.id} 
-    product={item}
-  />);
+  const toDos = api.map(item => <ToDo key={item.id} list={item}/>)
   return (
-    <>
-      {productComponents}
-    </>
+    <div className="todo-list">
+      {toDos}
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ body {
 
 .todo-list {
   background-color: white;
-  margin: auto;
+  margin: 40px auto;
   width: 50%;
   display: flex;
   flex-direction: column;
