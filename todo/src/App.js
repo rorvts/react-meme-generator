@@ -1,15 +1,18 @@
 import React from "react";
 import "./styles.css";
-import ToDo from "./components/List/List";
-import api from "./todoData";
+import Header from "./components/Header/Header";
+import Greeting from "./components/Greeting/Greeting";
 
-const App = () => {
-  const toDos = api.map(item => <ToDo key={item.id} list={item}/>)
-  return (
-    <div className="todo-list">
-      {toDos}
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    const username = "Rodrigo"
+    return (
+      <>
+        <Header username={username} />
+        <Greeting />
+      </>
+    )
+  }
 }
 
 export default App;
