@@ -1,18 +1,25 @@
 import React from "react";
 import "./styles.css";
+import List from "./components/List/List";
+import api from "./todoData";
 
 class App extends React.Component {
-  constructor() {
+  constructor(){
     super();
     this.state = {
-      isLoggedIn: true,
+      list: api
     }
   }
+  
   render(){
+    const data = this.state.list.map(item => <List key={item.id} list={item}/> )
     return (
-    <h1>You are currently logged {this.state.isLoggedIn ? "in" : "out"}</h1>
+      <div className="todo-list">
+        {data}
+      </div>
     )
   }
 }
+
 
 export default App;
