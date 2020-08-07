@@ -20,6 +20,7 @@ class App extends React.Component {
         }
         return td
       })
+      newArray.sort(a => a.completed)
       return { todo: newArray }
     });
   }
