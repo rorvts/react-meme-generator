@@ -1,26 +1,34 @@
 import React from "react";
 import "./styles.css";
+import todoData from "./todoData";
+import List from "./components/List/List";
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      count: 0
+      todo: todoData
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick() {
+  handleChange(id){
     this.setState(prevState => {
-      return {count: prevState.count + 1}
-    })
+      const newArray = prevState.todo.map(td => {
+        if(td.id === id){
+          td.completed = !td.completed
+        }
+        return td
+      })
+      return { todo: newArray }
+    });
   }
 
   render(){
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.handleClick}>Increase</button>
+    const todoList = this.state.todo.map(item => <List key={item.id} list={item} method={this.handleChange} />)
+    return(
+      <div className="todo-list">
+        {todoList}
       </div>
     )
   }
