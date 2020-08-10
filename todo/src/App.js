@@ -4,32 +4,33 @@ import todoData from "./todoData";
 import List from "./components/List/List";
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      todo: todoData
+      todos: todoData
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange(id){
+  handleClick(id) {
     this.setState(prevState => {
-      const newArray = prevState.todo.map(td => {
-        if(td.id === id){
-          td.completed = !td.completed
+      const todoItems = prevState.todos.map(item => {
+        if (id === item.id) {
+          item.completed = !item.completed
         }
-        return td
+        return item
       })
-      newArray.sort(a => a.completed)
-      return { todo: newArray }
-    });
+      return {
+        todos: todoItems.sort(a => a.completed)
+      }
+    })
   }
 
-  render(){
-    const todoList = this.state.todo.map(item => <List key={item.id} list={item} method={this.handleChange} />)
-    return(
+  render() {
+    const component = this.state.todos.map(item => <List key={item.id} list={item} method={this.handleClick} />)
+    return (
       <div className="todo-list">
-        {todoList}
+        {component}
       </div>
     )
   }
