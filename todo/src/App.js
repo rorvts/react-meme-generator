@@ -1,29 +1,36 @@
 import React from "react";
 import "./styles.css";
+import List from "./components/List/List";
+import data from "./todoData";
 
 class App extends React.Component {
-  constructor() {
+  constructor(){
     super();
     this.state = {
-      logged: false
+      todos: data
     }
-    this.logIn = this.logIn.bind(this);
-    this.logOut = this.logOut.bind(this);
+
+    this.finishTask = this.finishTask.bind(this);
   }
 
-  logIn() {
-    this.setState({ logged: true });
+  finishTask(id){
+    this.setState(prevState => {
+      const todoId = prevState.todos.map(item => {
+        if(item.id === id){
+          item.completed = !item.completed
+        }
+        return item
+      })
+      return { todos: todoId }
+    });
   }
 
-  logOut() {
-    this.setState({ logged: false });
-  }
 
-  render() {
-    return (
-      <div>
-        <h1>Logged {this.state.logged ? "in" : "out"}</h1>
-        <button onClick={this.state.logged ? this.logOut : this.logIn}>Log {this.state.logged ? "out" : "in"}</button>
+  render(){
+    const todosData = this.state.todos.map(item => <List key={item.id} list={item} method={this.finishTask} />)
+    return(
+      <div className="todo-list">
+        {todosData}
       </div>
     )
   }
