@@ -1,36 +1,28 @@
 import React from "react";
 import "./styles.css";
-import List from "./components/List/List";
-import data from "./todoData";
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      todos: data
+      loading: false,
+      values: {}
     }
-
-    this.finishTask = this.finishTask.bind(this);
   }
 
-  finishTask(id){
-    this.setState(prevState => {
-      const todoId = prevState.todos.map(item => {
-        if(item.id === id){
-          item.completed = !item.completed
-        }
-        return item
-      })
-      return { todos: todoId }
-    });
+  componentDidMount() {
+      this.setState({ loading: true });
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ loading: false, values: data })
+        })
   }
 
-
-  render(){
-    const todosData = this.state.todos.map(item => <List key={item.id} list={item} method={this.finishTask} />)
-    return(
-      <div className="todo-list">
-        {todosData}
+  render() {
+    return (
+      <div>
+        {this.state.loading ? <p>Loading...</p> : <p>{this.state.values.title}</p>}
       </div>
     )
   }
