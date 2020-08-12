@@ -1,26 +1,32 @@
-import React, {useState} from "react";
+import React from "react";
 import "./styles.css";
 
-
-const App = () => {
-  const [logged, setLogged] = useState(false);
-
-  function logIn(){
-    setLogged(true);
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      logged: false
+    }
+    this.logIn = this.logIn.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
-  function logOut(){
-    setLogged(false);
+  logIn() {
+    this.setState({ logged: true });
   }
 
-  return (
-    <div>
-      <h1>Logged {logged ? "in" : "out"}</h1>
-      <button onClick={logged ? logOut : logIn}>
-        Log {logged ? "out" : "in"}
-      </button>
-    </div>
-  )
+  logOut() {
+    this.setState({ logged: false });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Logged {this.state.logged ? "in" : "out"}</h1>
+        <button onClick={this.state.logged ? this.logOut : this.logIn}>Log {this.state.logged ? "out" : "in"}</button>
+      </div>
+    )
+  }
 }
 
 export default App;
