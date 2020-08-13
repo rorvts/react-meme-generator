@@ -5,24 +5,30 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
-      values: {}
+      firstName: "",
+      lastName: ""
     }
+
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  componentDidMount() {
-      this.setState({ loading: true });
-      fetch("https://jsonplaceholder.typicode.com/todos/1")
-        .then(response => response.json())
-        .then(data => {
-          this.setState({ loading: false, values: data })
-        })
+  handleInput(event) {
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    });
   }
 
   render() {
     return (
       <div>
-        {this.state.loading ? <p>Loading...</p> : <p>{this.state.values.title}</p>}
+        <form>
+          <label>First Name</label><br />
+          <input type="text" value={this.state.firstName} placeholder="First Name" name="firstName" onChange={this.handleInput} /><br /><br />
+          <label>Last Name</label><br />
+          <input type="text" value={this.state.lastName} placeholder="Last Name" name="lastName" onChange={this.handleInput} /><br /><br />
+          <h1>{this.state.firstName} {this.state.lastName}</h1>
+        </form>
       </div>
     )
   }
