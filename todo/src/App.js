@@ -4,20 +4,19 @@ import "./styles.css";
 class App extends React.Component {
   constructor() {
     super();
+
     this.state = {
       firstName: "",
       lastName: "",
-      someText: "",
-      professional: false,
-      gender: "",
-      technology: ""
+      age: 0,
+      agreement: false
     }
-
-    this.handleInput = this.handleInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInput(event) {
-    const { name, value, type, checked } = event.target
+  handleChange(event) {
+    const { name, value, checked, type } = event.target;
     type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value });
   }
 
@@ -25,87 +24,49 @@ class App extends React.Component {
     return (
       <div>
         <form>
-          <label>First Name</label><br />
           <input
             type="text"
-            value={this.state.firstName}
             placeholder="First Name"
+            value={this.state.firstName}
             name="firstName"
-            onChange={this.handleInput}
-          />
-
-          <br /><br />
-
-          <label>Last Name</label><br />
+            onChange={this.handleChange}
+          /><br />
           <input
             type="text"
-            value={this.state.lastName}
             placeholder="Last Name"
+            value={this.state.lastName}
             name="lastName"
-            onChange={this.handleInput}
-          />
-
-          <br /><br />
-
-          <h3>{this.state.firstName} {this.state.lastName}</h3>
-
-          <label>Some Text</label><br />
-          <textarea
-            name="someText"
-            onChange={this.handleInput}
-          />
-
-          <br />
-
-          <h3>{this.state.someText}</h3><br />
-
-          <label>Professional </label>
+            onChange={this.handleChange}
+          /><br />
+          <input
+            placeholder="Age"
+            name="age"
+            value={this.state.age === 0 ? "" : this.state.age}
+            onChange={this.handleChange}
+          /><br />
           <input
             type="checkbox"
-            checked={this.state.professional}
-            name="professional"
-            onChange={this.handleInput}
+            checked={this.state.agreement}
+            name="agreement"
+            onChange={this.handleChange}
           />
+          <p
+            style={{
+              fontSize: 8,
+              display: "inline",
+              marginLeft: 5,
+              verticalAlign: "middle"
+            }}>I read and agree with the terms.</p><br /><br />
 
-          <h3>{`${this.state.professional}`}</h3>
+          <button>Submit</button>
 
-          <br />
-
-          <label>Gender</label><br />
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            onChange={this.handleInput} />
-          <label> Male</label>
-
-          <br />
-
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            onChange={this.handleInput}
-          />
-          <label> Female</label>
-
-          <br />
-
-          <h3>{this.state.gender}</h3>
-
-          <br />
-
-          <label>Technology</label><br />
-          <select onChange={this.handleInput} name="technology">
-            <option value="JavaScript">JavaScript</option>
-            <option value="C#">C#</option>
-            <option value="Go">Go</option>
-          </select>
-
-          <br />
-
-          <h3>{this.state.technology}</h3>
         </form>
+        <br /><br />
+        <hr />
+        <h4>Entered Information:</h4><br />
+        <h5>Your name: {this.state.firstName} {this.state.lastName}</h5>
+        <h5>Your age: {this.state.age === 0 ? "" : this.state.age}</h5>
+        <h5>Have you agreed with the terms? {this.state.agreement ? "Yes" : "No"}</h5>
       </div>
     )
   }
