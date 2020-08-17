@@ -1,10 +1,13 @@
 import React from "react";
-import "./styles.css";
-import FormContainer from "./FormContainer";
+import Header from "./components/Header/Header";
+import MemeGenerator from "./components/MemeGenerator/MemeGenerator";
 
 const App = () => {
   return (
-    <FormContainer />
+    <>
+      <Header />
+      <MemeGenerator />
+    </>
   )
 }
 
